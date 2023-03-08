@@ -8,34 +8,57 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float dashSpeed;
-    private Vector2 lastDirection;
+    [SerializeField] private float dashWaitTime;
+    private float timeUntilDash = 0f;
+    private bool canDash = true;
     [SerializeField] private Weapon weapon;
+
+    [SerializeField] private int maxHealth;
+    private int health = 0;
+
+    [SerializeField] private float invincibilityTime;
+    private bool isInvincible;
+    private float invincibilityLeft = 0f;
 
     private Vector2 lookDirection = new Vector2();
 
-    // Start is called before the first frame update
     void Start()
     {
         Init();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         lookDirection = (controller.MousePos - (Vector2)transform.position).normalized;
-        
-        if(controller.Direction.magnitude != 0)
-        {
-            lastDirection = controller.Direction;
-        }
+
         if(controller.LeftMB && weapon.CanShoot)
         {
             weapon.Shoot(lookDirection);
+        }
+
+
+        if(timeUntilDash > 0f)
+        {
+            timeUntilDash -= Mathf.Min(timeUntilDash, Time.deltaTime);
+        }
+        else if(!canDash)
+        {
+            canDash = true;
+        }
+
+        if(invincibilityLeft > 0)
+        {
+            invincibilityLeft -= Mathf.Min(invincibilityLeft, Time.deltaTime);
+        }
+        else if(isInvincible)
+        {
+            isInvincible = false;
         }
     }
     public void Init()
     {
         controller.DashKey.SetPressedAction(Dash);
+        health = maxHealth;
     }
 
     void FixedUpdate()
@@ -48,6 +71,36 @@ public class PlayerManager : MonoBehaviour
 
     private void Dash()
     {
-        rb.AddForce(lastDirection * dashSpeed, ForceMode2D.Impulse);
+        if(canDash && controller.Direction.magnitude != 0)
+        {
+            canDash = false;
+            timeUntilDash = dashWaitTime;
+            rb.AddForce(controller.Direction * dashSpeed, ForceMode2D.Impulse);
+        }
+    }
+
+    private void TakeDamage()
+    {
+        health --;
+        if(health == 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        GameManager.Instance.GameOver();
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && !isInvincible)
+        {
+            isInvincible = true;
+            invincibilityLeft = invincibilityTime;
+            TakeDamage();            
+        }
     }
 }

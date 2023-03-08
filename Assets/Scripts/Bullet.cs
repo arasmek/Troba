@@ -19,15 +19,17 @@ public class Bullet : MonoBehaviour
         this.deathAction = deathAction;
         rb.AddForce(speed, ForceMode2D.Impulse);
     }
-    // Update is called once per frame
+    
+
     void Update()
     {
-        if(transform.position.magnitude > GameManager.Instance.arenaRadius)
+        if(transform.position.magnitude > GameManager.Instance.ArenaRadius)
         {
             Die();
         }
     }
 
+    //TODO: Update when enemies are implemented
     private void Die()
     {
         deathAction.Invoke(this);

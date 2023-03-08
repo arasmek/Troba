@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public enum GameState
+{
+    GameOver,
+    Game,
+    Paused
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -12,35 +21,46 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerSpawn;
     public PlayerManager Player {get; private set;} 
     
-    public float arenaRadius = 0f;
+    public float ArenaRadius = 0f;
     [SerializeField] private BulletManager bulletManager;
     [HideInInspector] public BulletManager BulletManager => bulletManager;
 
-    void Start()
-    {
-        Init();
-    }
+    [SerializeField] private Button RestartButton;
+
+    public GameState CurrentState {get; private set;}
 
     void Awake()
     {
         instance = this;
+        Init();
     }
 
     private void Init()
     {
+        CurrentState = GameState.Game;
+        RestartButton.onClick.AddListener(() => Restart());
+        RestartButton.gameObject.SetActive(false);
         Player = Instantiate(playerPrefab);
         Player.transform.position = playerSpawn.position;
         playerCam.Follow = Player.transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    //TODO: GameOver implementation
+    public void GameOver()
     {
-        
+        CurrentState = GameState.GameOver;
+        RestartButton.gameObject.SetActive(true);
+    }
+
+    //TODO: When checkpoints are implemented, this should do more functionality
+    private void Restart()
+    {
+        SceneManager.LoadScene("MainLevelScene");
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(Vector3.zero, arenaRadius);
+        Gizmos.DrawWireSphere(Vector3.zero, ArenaRadius);
+        Gizmos.DrawWireCube(playerSpawn.position, playerSpawn.localScale);
     }
 }
