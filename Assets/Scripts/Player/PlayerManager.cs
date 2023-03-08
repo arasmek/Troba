@@ -2,26 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private PlayerController controller;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float dashSpeed;
     private Vector2 lastDirection;
+    [SerializeField] private Weapon weapon;
+
+    private Vector2 lookDirection = new Vector2();
 
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();
+        Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(controller.Direction.magnitude != 0)lastDirection = controller.Direction;
+        lookDirection = (controller.MousePos - (Vector2)transform.position).normalized;
+        
+        if(controller.Direction.magnitude != 0)
+        {
+            lastDirection = controller.Direction;
+        }
+        if(controller.LeftMB && weapon.CanShoot)
+        {
+            weapon.Shoot(lookDirection);
+        }
     }
-    public void Initialize()
+    public void Init()
     {
         controller.DashKey.SetPressedAction(Dash);
     }

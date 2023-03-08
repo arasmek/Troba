@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 Direction  {get; private set;} = new Vector2();
     public Vector2 MousePos {get; private set;} = new Vector2();
 
+    public bool LeftMB {get; private set;} = false;
+
     public ActionKey DashKey {get; private set; } = new ActionKey(KeyCode.LeftShift);
 
     void Start()
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        LeftMB = Input.GetMouseButton(0);
         HorizontalAxis = (Input.GetKey(KeyCode.D)?1:0) - (Input.GetKey(KeyCode.A)?1:0);
         VerticalAxis = (Input.GetKey(KeyCode.W)?1:0) - (Input.GetKey(KeyCode.S)?1:0);
         MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
