@@ -13,11 +13,6 @@ public class PlayerController : MonoBehaviour
     public bool LeftMB {get; private set;} = false;
 
     public ActionKey DashKey {get; private set; } = new ActionKey(KeyCode.LeftShift);
-
-    void Start()
-    {   
-    }
-
     void Update()
     {
         LeftMB = Input.GetMouseButton(0);
