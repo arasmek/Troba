@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
 
     private Vector2 lookDirection = new Vector2();
 
+
     void Start()
     {
         Init();
@@ -103,4 +104,6 @@ public class PlayerManager : MonoBehaviour
             TakeDamage();            
         }
     }
+
+
 }
