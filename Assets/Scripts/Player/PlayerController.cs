@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         LeftMB = Input.GetMouseButton(0);
         HorizontalAxis = (Input.GetKey(KeyCode.D)?1:0) - (Input.GetKey(KeyCode.A)?1:0);
         VerticalAxis = (Input.GetKey(KeyCode.W)?1:0) - (Input.GetKey(KeyCode.S)?1:0);
-        MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Direction = new Vector2(HorizontalAxis, VerticalAxis).normalized;
         DashKey.Update();
     }
