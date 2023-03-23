@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -94,7 +96,8 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
-
+    public TextMeshProUGUI MyscoreText;
+    private int ScoreNum;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy" && !isInvincible)
@@ -102,6 +105,12 @@ public class PlayerManager : MonoBehaviour
             isInvincible = true;
             invincibilityLeft = invincibilityTime;
             TakeDamage();            
+        }
+        if (collision.gameObject.tag == "MyCoin" )
+        {
+            ScoreNum++;
+            Destroy(collision.gameObject);
+            MyscoreText.text = "" + ScoreNum;
         }
     }
 

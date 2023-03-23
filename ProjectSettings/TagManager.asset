@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Amber
+  - MyCoin
   layers:
   - Default
   - TransparentFX

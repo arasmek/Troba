@@ -81,4 +81,7 @@ public class GameManager : MonoBehaviour
         Gizmos.DrawWireSphere(Vector3.zero, ArenaRadius);
         Gizmos.DrawWireCube(playerSpawn.position, playerSpawn.localScale);
     }
+
+    
+
 }
