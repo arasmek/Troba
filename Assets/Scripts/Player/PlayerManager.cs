@@ -23,11 +23,13 @@ public class PlayerManager : MonoBehaviour
     private float invincibilityLeft = 0f;
 
     private Vector2 lookDirection = new Vector2();
-
+    [SerializeField] public TextMeshProUGUI MyscoreText;
+    private int ScoreNum;
 
     void Start()
     {
         Init();
+        
     }
     
     void Update()
@@ -96,8 +98,7 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
-    public TextMeshProUGUI MyscoreText;
-    private int ScoreNum;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy" && !isInvincible)
@@ -108,10 +109,11 @@ public class PlayerManager : MonoBehaviour
         }
         if (collision.gameObject.tag == "MyCoin" )
         {
-            ScoreNum++;
             Destroy(collision.gameObject);
-            MyscoreText.text = "" + ScoreNum;
+            GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            gameManager.CollectCoin();
         }
+
     }
 
 

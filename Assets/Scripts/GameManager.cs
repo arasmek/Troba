@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum GameState
 {
@@ -80,6 +81,14 @@ public class GameManager : MonoBehaviour
     {
         Gizmos.DrawWireSphere(Vector3.zero, ArenaRadius);
         Gizmos.DrawWireCube(playerSpawn.position, playerSpawn.localScale);
+    }
+    
+    public TextMeshProUGUI MyscoreText;
+    private int ScoreNum = 0;
+    public void CollectCoin()
+    {
+        ScoreNum++;
+        MyscoreText.text = ScoreNum.ToString();
     }
 
     
