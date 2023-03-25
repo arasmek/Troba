@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera playerCam;
     [SerializeField] private PlayerManager playerPrefab;
     [SerializeField] private Transform playerSpawn;
+    //[SerializeField] private EnemyManager enemyPrefab;
+    //[SerializeField] private Transform enemySpawn;
     public PlayerManager Player {get; private set;} 
     
     public float ArenaRadius = 0f;
