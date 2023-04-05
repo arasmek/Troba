@@ -29,9 +29,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         Init();
-        
     }
-    
+
     void Update()
     {
         lookDirection = (controller.MousePos - (Vector2)transform.position).normalized;
@@ -40,8 +39,6 @@ public class PlayerManager : MonoBehaviour
         {
             weapon.Shoot(lookDirection);
         }
-
-
         if(timeUntilDash > 0f)
         {
             timeUntilDash -= Mathf.Min(timeUntilDash, Time.deltaTime);
@@ -64,6 +61,7 @@ public class PlayerManager : MonoBehaviour
     {
         controller.DashKey.SetPressedAction(Dash);
         health = maxHealth;
+        
     }
 
     void FixedUpdate()
@@ -86,7 +84,9 @@ public class PlayerManager : MonoBehaviour
 
     private void TakeDamage()
     {
-        health --;
+        GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager.ChangeHearts(false, health);
+        health--;
         if(health == 0)
         {
             Die();
@@ -105,13 +105,20 @@ public class PlayerManager : MonoBehaviour
         {
             isInvincible = true;
             invincibilityLeft = invincibilityTime;
-            TakeDamage();            
+            TakeDamage();
         }
         if (collision.gameObject.tag == "MyCoin" )
         {
             Destroy(collision.gameObject);
             GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             gameManager.CollectCoin();
+        }
+        if (collision.gameObject.tag == "Heart" )
+        {
+            Destroy(collision.gameObject);
+            GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            gameManager.ChangeHearts(true, health);
+            health++;
         }
 
     }

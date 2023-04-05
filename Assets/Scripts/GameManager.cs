@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+
     }
 
     //TODO: GameOver implementation
@@ -92,7 +93,17 @@ public class GameManager : MonoBehaviour
         ScoreNum++;
         MyscoreText.text = ScoreNum.ToString();
     }
-
-    
+    public Image[] hearts;
+    public void ChangeHearts(bool add, int health)
+    {
+        if(!add)
+        {
+            hearts[health - 1].enabled = false;
+        }
+        else
+        {
+            hearts[health].enabled = true;
+        }
+    }
 
 }
