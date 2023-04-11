@@ -115,10 +115,14 @@ public class PlayerManager : MonoBehaviour
         }
         if (collision.gameObject.tag == "Heart" )
         {
-            Destroy(collision.gameObject);
-            GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-            gameManager.ChangeHearts(true, health);
-            health++;
+            if(health != maxHealth)
+            {
+                Destroy(collision.gameObject);
+                GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+                gameManager.ChangeHearts(true, health);
+                health++;
+            }
+ 
         }
 
     }
