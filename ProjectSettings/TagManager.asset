@@ -8,6 +8,7 @@ TagManager:
   - Amber
   - MyCoin
   - Heart
+  - Bullet
   layers:
   - Default
   - TransparentFX

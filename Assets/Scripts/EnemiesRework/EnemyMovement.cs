@@ -17,19 +17,23 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (canMove && playerTransform != null)
-        {
-            // Calculate the direction and distance to the player.
-            Vector3 direction = playerTransform.position - transform.position;
-            float distance = direction.magnitude;
+    if (canMove && playerTransform != null)
+    {
+        // Calculate the direction and distance to the player.
+        Vector3 direction = playerTransform.position - transform.position;
+        float distance = direction.magnitude;
 
-            // Move towards the player if the enemy is not already at the player's position.
-            if (distance > 0.1f)
-            {
-                transform.Translate(direction.normalized * speed * Time.deltaTime);
-            }
+        // Cast a ray towards the player to check for obstacles.
+        RaycastHit hit;
+        bool hitObstacle = Physics.Raycast(transform.position, direction, out hit, distance);
+
+        // If there are no obstacles, move towards the player.
+        if (!hitObstacle || hit.collider.gameObject.tag == playerTag)
+        {
+            transform.Translate(direction.normalized * speed * Time.deltaTime);
         }
     }
+}
 
     private IEnumerator StartMovementDelay()
     {
