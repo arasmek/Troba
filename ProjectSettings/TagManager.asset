@@ -9,6 +9,7 @@ TagManager:
   - MyCoin
   - Heart
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
