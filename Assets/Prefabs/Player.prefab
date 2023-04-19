@@ -164,6 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6cb078f20e209ea8410ec06a9dea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upSprite: {fileID: -129558190, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
+  downSprite: {fileID: 671631726, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
+  leftSprite: {fileID: -951230943, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
+  rightSprite: {fileID: 979953432, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
 --- !u!114 &8040662956391230571
 MonoBehaviour:
   m_ObjectHideFlags: 0

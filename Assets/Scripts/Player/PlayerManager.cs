@@ -35,24 +35,24 @@ public class PlayerManager : MonoBehaviour
     {
         lookDirection = (controller.MousePos - (Vector2)transform.position).normalized;
 
-        if(controller.LeftMB && weapon.CanShoot)
+        if (controller.LeftMB && weapon.CanShoot)
         {
             weapon.Shoot(lookDirection);
         }
-        if(timeUntilDash > 0f)
+        if (timeUntilDash > 0f)
         {
             timeUntilDash -= Mathf.Min(timeUntilDash, Time.deltaTime);
         }
-        else if(!canDash)
+        else if (!canDash)
         {
             canDash = true;
         }
 
-        if(invincibilityLeft > 0)
+        if (invincibilityLeft > 0)
         {
             invincibilityLeft -= Mathf.Min(invincibilityLeft, Time.deltaTime);
         }
-        else if(isInvincible)
+        else if (isInvincible)
         {
             isInvincible = false;
         }
@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
     {
         controller.DashKey.SetPressedAction(Dash);
         health = maxHealth;
-        
+
     }
 
     void FixedUpdate()
@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Dash()
     {
-        if(canDash && controller.Direction.magnitude != 0)
+        if (canDash && controller.Direction.magnitude != 0)
         {
             canDash = false;
             timeUntilDash = dashWaitTime;
@@ -87,7 +87,7 @@ public class PlayerManager : MonoBehaviour
         GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         gameManager.ChangeHearts(false, health);
         health--;
-        if(health == 0)
+        if (health == 0)
         {
             Die();
         }
@@ -101,28 +101,28 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && !isInvincible)
+        if (collision.gameObject.tag == "Enemy" && !isInvincible)
         {
             isInvincible = true;
             invincibilityLeft = invincibilityTime;
             TakeDamage();
         }
-        if (collision.gameObject.tag == "MyCoin" )
+        if (collision.gameObject.tag == "MyCoin")
         {
             Destroy(collision.gameObject);
             GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             gameManager.CollectCoin();
         }
-        if (collision.gameObject.tag == "Heart" )
+        if (collision.gameObject.tag == "Heart")
         {
-            if(health != maxHealth)
+            if (health != maxHealth)
             {
                 Destroy(collision.gameObject);
                 GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
                 gameManager.ChangeHearts(true, health);
                 health++;
             }
- 
+
         }
 
     }
