@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
         // If there are no obstacles, move towards the player.
         if (!hitObstacle || hit.collider.gameObject.tag == playerTag)
         {
-            transform.Translate(direction.normalized * speed * Time.deltaTime);
+            GetComponent<Rigidbody2D>().velocity = direction.normalized * speed;
         }
     }
 }
