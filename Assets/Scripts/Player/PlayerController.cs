@@ -13,16 +13,16 @@ public class PlayerController : MonoBehaviour
     public ActionKey DashKey { get; private set; } = new ActionKey(KeyCode.LeftShift);
 
 
-    //public Sprite upSprite;
-    //public Sprite downSprite;
-    //public Sprite leftSprite;
-    //public Sprite rightSprite;
-    //private SpriteRenderer spriteRenderer;
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+    private SpriteRenderer spriteRenderer;
 
-    //void Start()
-    //{
-    //    spriteRenderer = GetComponent<SpriteRenderer>();
-    //}
+    void Start()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -34,24 +34,23 @@ public class PlayerController : MonoBehaviour
         DashKey.Update();
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //if (mousePos.y > transform.position.y)
-        //{
-        //    spriteRenderer.sprite = upSprite;
-        //}
-        //else if (mousePos.y < transform.position.y)
-        //{
-        //    spriteRenderer.sprite = downSprite;
-        //}
-
-        //if (mousePos.x < transform.position.x)
-        //{
-        //    spriteRenderer.sprite = leftSprite;
-        //}
-        //else if (mousePos.x > transform.position.x)
-        //{
-        //    spriteRenderer.sprite = rightSprite;
-        //}
+        
+        if (Direction.x > 0)
+        {
+            spriteRenderer.sprite = rightSprite;
+        }
+        else if (Direction.x < 0)
+        {
+            spriteRenderer.sprite = leftSprite;
+        }
+        else if (Direction.y > 0)
+        {
+            spriteRenderer.sprite = upSprite;
+        }
+        else if (Direction.y < 0)
+        {
+            spriteRenderer.sprite = downSprite;
+        }
     }
 
     public class ActionKey

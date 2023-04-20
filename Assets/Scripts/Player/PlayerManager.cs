@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     private Vector2 lookDirection = new Vector2();
     [SerializeField] public TextMeshProUGUI MyscoreText;
     private int ScoreNum;
+    private float DirectionDeg;
 
     void Start()
     {
@@ -33,11 +34,11 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        lookDirection = (controller.MousePos - (Vector2)transform.position).normalized;
+        lookDirection = (controller.MousePos).normalized;
 
         if (controller.LeftMB && weapon.CanShoot)
         {
-            weapon.Shoot(lookDirection);
+            weapon.Shoot(DegreeToVector2(DirectionDeg));
         }
         if (timeUntilDash > 0f)
         {
@@ -64,12 +65,17 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public static Vector2 DegreeToVector2(float degree)
+    {
+        float radian = degree * Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+    }
+
     void FixedUpdate()
     {
         rb.AddForce(controller.Direction * speed, ForceMode2D.Force);
-        float DirectionDeg = Mathf.Atan2(controller.MousePos.y - transform.position.y,
-                                         controller.MousePos.x - transform.position.x) * Mathf.Rad2Deg;
-        rb.MoveRotation(DirectionDeg);
+        DirectionDeg = Mathf.Atan2(controller.MousePos.y - transform.position.y, controller.MousePos.x - transform.position.x) * Mathf.Rad2Deg;
+        //rb.MoveRotation(DirectionDeg);
     }
 
     private void Dash()
