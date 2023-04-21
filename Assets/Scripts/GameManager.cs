@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public void Upgrade()
     {
-        if(!UpgradeScreen.gameObject.activeSelf)
+        if(!UpgradeScreen.gameObject.activeSelf && !PauseMenu.gameObject.activeSelf)
         {
             Time.timeScale = 0;
             CurrentState = GameState.Paused;
