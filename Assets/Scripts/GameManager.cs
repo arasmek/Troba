@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Button RestartButton;
     [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject UpgradeScreen;
+    
     
 
     public GameState CurrentState {get; private set;}
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
         RestartButton.onClick.AddListener(() => Restart());
         RestartButton.gameObject.SetActive(false);
         PauseMenu.gameObject.SetActive(false);
+        UpgradeScreen.gameObject.SetActive(false);
         Player = Instantiate(playerPrefab);
         Player.transform.position = playerSpawn.position;
         playerCam.Follow = Player.transform;
@@ -56,6 +59,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Upgrade();
         }
 
     }
@@ -69,9 +76,22 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
-        CurrentState = GameState.Paused;
-        PauseMenu.gameObject.SetActive(true);
+        if(!UpgradeScreen.gameObject.activeSelf)
+        {
+            Time.timeScale = 0;
+            CurrentState = GameState.Paused;
+            PauseMenu.gameObject.SetActive(true);
+        }
+    }
+    public void Upgrade()
+    {
+        if(!UpgradeScreen.gameObject.activeSelf)
+        {
+            Time.timeScale = 0;
+            CurrentState = GameState.Paused;
+            UpgradeScreen.gameObject.SetActive(true);
+        }
+        
     }
 
     //TODO: When checkpoints are implemented, this should do more functionality

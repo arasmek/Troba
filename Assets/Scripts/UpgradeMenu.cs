@@ -9,18 +9,18 @@ public class UpgradeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Upgrade();
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        {
+            ExitUpgrade();
+        }
     }
-    void Upgrade()
+    void ExitUpgrade()
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
