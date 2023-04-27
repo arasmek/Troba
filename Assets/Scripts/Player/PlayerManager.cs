@@ -8,15 +8,15 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private PlayerController controller;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashWaitTime;
     private float timeUntilDash = 0f;
     private bool canDash = true;
     [SerializeField] private Weapon weapon;
 
-    [SerializeField] private int maxHealth;
-    private int health = 0;
+    [SerializeField] public int maxHealth;
+    public int health = 0;
 
     [SerializeField] private float invincibilityTime;
     private bool isInvincible;
@@ -132,6 +132,4 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
-
-
 }
