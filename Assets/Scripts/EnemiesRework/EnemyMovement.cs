@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed = 5f; // The speed at which the enemy moves towards the player.
-    public string playerTag = "Player"; // The tag of the player GameObject.
+    public string targetTag = "Player"; // The tag of the player GameObject.
 
     private Transform playerTransform; // The transform of the player GameObject.
     private bool canMove = false; // Flag to check if the enemy can move towards the player.
@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Start the delay coroutine.
         StartCoroutine(StartMovementDelay());
+        if(gameObject.tag == "Enemy2") targetTag = "Hut";
     }
 
     private void Update()
@@ -28,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         bool hitObstacle = Physics.Raycast(transform.position, direction, out hit, distance);
 
         // If there are no obstacles, move towards the player.
-        if (!hitObstacle || hit.collider.gameObject.tag == playerTag)
+        if (!hitObstacle || hit.collider.gameObject.tag == targetTag)
         {
             GetComponent<Rigidbody2D>().velocity = direction.normalized * speed;
         }
@@ -38,10 +39,10 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator StartMovementDelay()
     {
         // Wait for 5 seconds before finding the player GameObject.
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         // Find the player GameObject using the tag.
-        GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
+        GameObject playerObject = GameObject.FindGameObjectWithTag(targetTag);
 
         // Set the playerTransform variable to the transform of the player GameObject.
         if (playerObject != null)
@@ -52,4 +53,7 @@ public class EnemyMovement : MonoBehaviour
         // Set the flag to true to allow the enemy to move.
         canMove = true;
     }
+
+
+
 }
