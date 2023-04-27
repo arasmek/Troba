@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class UpgradeMenu : MonoBehaviour
     }
     void Upgrade()
     {
-        gameObject.SetActive(false);
         Time.timeScale = 1;
+        SceneManager.LoadScene("UpgradeMenu");
     }
 }
