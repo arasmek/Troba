@@ -21,9 +21,11 @@ public class UpgradeMenu : MonoBehaviour
             ExitUpgrade();
         }
     }
+    
     void ExitUpgrade()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("UpgradeMenu");
+        gameObject.SetActive(false);
+        
     }
 }
