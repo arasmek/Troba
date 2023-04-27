@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     }
     
     public TextMeshProUGUI MyscoreText;
-    private int ScoreNum = 0;
+    public int ScoreNum = 0;
     public void CollectCoin()
     {
         ScoreNum++;
