@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
-    GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
-    PlayerManager playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+    GameManager gameManager;
+    PlayerManager playerManager;
 
     public Button HealthButton;
     public Button SpeedButton;
@@ -15,6 +15,8 @@ public class UpgradeMenu : MonoBehaviour
 
     void Start()
     {
+        playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -26,14 +28,13 @@ public class UpgradeMenu : MonoBehaviour
     }
     void ExitUpgrade()
     {
+        gameObject.SetActive(false);
         Time.timeScale = 1;
-        SceneManager.LoadScene("UpgradeMenu");
     }
 
 
     public void SubtractCoins(int value)
     {
-        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.ScoreNum -= value;
     }
 
