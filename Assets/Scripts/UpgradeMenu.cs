@@ -63,15 +63,15 @@ public class UpgradeMenu : MonoBehaviour
             }
         }
     }
-    //public void UpdateBullets()
-    //{
-    //    Weapon weapon = playerManager.transform.Find("Weapon").GetComponent<Weapon>();
-    //    if (SpeedButton.interactable)
-    //    {
-    //        if (gameManager.ScoreNum >= 32)
-    //        {
-    //            SubtractCoins(32);
-    //        }
-    //    }
-    //}
+    public void UpdateBullets()
+    {
+        Weapon weapon = playerManager.transform.Find("Weapon").GetComponent<Weapon>();
+        if (SpeedButton.interactable)
+        {
+            if (gameManager.ScoreNum >= 32)
+            {
+                SubtractCoins(32);
+            }
+        }
+    }
 }

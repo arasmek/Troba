@@ -11,15 +11,15 @@ public class SettingsMenu : MonoBehaviour
 
     public void ScreenMode()
     {
-        if(screentext.text == "Pilnas ekr.")
+        if(screentext.text == "Full screen")
         {
             Screen.fullScreen = false;
-            screentext.text = "Langas";
+            screentext.text = "Window";
         }
         else
         {
             Screen.fullScreen = true;
-            screentext.text = "Pilnas ekr.";
+            screentext.text = "Full screen";
         }
     }
 
