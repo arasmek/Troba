@@ -60,11 +60,6 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Upgrade();
-        }
-
     }
 
     public void GameOver()

@@ -109,6 +109,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && !isInvincible)
         {
+            Debug.Log("damage taken");
             isInvincible = true;
             invincibilityLeft = invincibilityTime;
             TakeDamage();

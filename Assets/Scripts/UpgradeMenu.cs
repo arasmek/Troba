@@ -8,20 +8,23 @@ public class UpgradeMenu : MonoBehaviour
 {
     GameManager gameManager;
     PlayerManager playerManager;
+    WaveManager waveManager;
 
     public Button HealthButton;
     public Button SpeedButton;
     public Button BulletButton;
+    public Button NextWaveButton;
 
     void Start()
     {
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
+        waveManager = GameObject.FindObjectOfType<WaveManager>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
         {
             ExitUpgrade();
         }
@@ -73,5 +76,10 @@ public class UpgradeMenu : MonoBehaviour
                 SubtractCoins(32);
             }
         }
+    }
+    public void StartNextWave()
+    {
+        waveManager.StartNextWave();
+        ExitUpgrade();
     }
 }
