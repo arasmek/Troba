@@ -187,6 +187,7 @@ MonoBehaviour:
   dashWaitTime: 0.125
   weapon: {fileID: 6865805397766561912}
   maxHealth: 3
+  health: 0
   invincibilityTime: 1
   MyscoreText: {fileID: 0}
 --- !u!61 &1775542211745711586
@@ -265,7 +266,7 @@ MonoBehaviour:
   fireRate: 2
   bulletSpeed: 15.23
   spreadAmount: 0
-  bulletSize: 0.5
+  bulletSize: 4
 --- !u!1 &9054751548652020937
 GameObject:
   m_ObjectHideFlags: 0

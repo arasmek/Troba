@@ -14,13 +14,13 @@ public class Bullet : MonoBehaviour
         bulletManager = GameManager.Instance.BulletManager;
     }
 
+
     public void Init(UnityAction<Bullet> deathAction, Vector2 speed)
     {
         this.deathAction = deathAction;
         rb.AddForce(speed, ForceMode2D.Impulse);
     }
     
-
     void Update()
     {
         if(transform.position.magnitude > GameManager.Instance.ArenaRadius)

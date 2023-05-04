@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //TODO: GameOver implementation
     public void GameOver()
     {
         CurrentState = GameState.GameOver;
