@@ -7,7 +7,7 @@ public class EnemyHutAttack : MonoBehaviour
     public float damage = 1.0f;
     public float damageInterval = 3.0f;
     public string targetTag = "Hut";
-
+    public bool isAitvaras = false;
     private float nextDamageTime = 0.0f;
 
     private void OnTriggerStay2D(Collider2D other)
@@ -20,7 +20,10 @@ public class EnemyHutAttack : MonoBehaviour
             {
                 hut.TakeDamage(damage);
             }
-
+            if(isAitvaras)
+            {
+                EnemyHealth.Destroy(gameObject);
+            }
             nextDamageTime = Time.time + damageInterval;
         }
     }

@@ -15,9 +15,27 @@ public class EnemyHealth : MonoBehaviour
             // Check if the enemy has no health points left.
             if (health <= 0)
             {
-                // Destroy the enemy gameobject.
-                Destroy(gameObject);
+                Death();                
             }
+        }
+    }
+
+    public GameObject coinPrefab;
+    public float coinSpawnChance = 0.5f;
+    public GameObject heartPrefab;
+    public float heartSpawnChance = 0.1f;
+    public void Death()
+    {
+        Destroy(gameObject);
+        // Spawn a coin with a random chance
+        float randomValue = Random.value;
+        if (randomValue <= coinSpawnChance)
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
+        else if (randomValue <= coinSpawnChance + heartSpawnChance)
+        {
+            Instantiate(heartPrefab, transform.position, Quaternion.identity);
         }
     }
 }

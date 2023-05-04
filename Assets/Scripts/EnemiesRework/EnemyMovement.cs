@@ -13,7 +13,6 @@ public class EnemyMovement : MonoBehaviour
     {
         // Start the delay coroutine.
         StartCoroutine(StartMovementDelay());
-        if(gameObject.tag == "Enemy2") targetTag = "Hut";
     }
 
     private void Update()

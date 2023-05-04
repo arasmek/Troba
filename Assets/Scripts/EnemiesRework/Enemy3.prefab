@@ -98,9 +98,10 @@ GameObject:
   - component: {fileID: 832266114817503395}
   - component: {fileID: -7862552020103617583}
   - component: {fileID: -5773708345132172356}
+  - component: {fileID: 2754973409251678239}
   m_Layer: 0
-  m_Name: Enemy1
-  m_TagString: Enemy
+  m_Name: Enemy3
+  m_TagString: Enemy3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,8 +162,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dbfa270f56514944c8a4db388dbe179a, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e9e31eddde09deb4bba1399cda9e4f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1458debcef5c6534fbab621ecb2c99d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   targetTag: Hut
 --- !u!114 &832266114817503395
 MonoBehaviour:
@@ -199,11 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1ba44f282757f4e93a9012f1059b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
   coinPrefab: {fileID: 1775398012288577495, guid: 091c3295c1e318c49a715b55c4810002, type: 3}
-  coinSpawnChance: 0.1
+  coinSpawnChance: 0.5
   heartPrefab: {fileID: 1775398012288577495, guid: 59bf7778cc9392d40a53e29aa7779668, type: 3}
-  heartSpawnChance: 0.3
+  heartSpawnChance: 0
 --- !u!61 &-7862552020103617583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -251,3 +252,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2754973409251678239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329971976941907072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047cf8ef9adbcef4380b5c94d36ba4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageInterval: 3
+  targetTag: Hut
+  isAitvaras: 1
