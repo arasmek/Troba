@@ -114,8 +114,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329971976941907072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.81, y: -6.61, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 7.9497, y: -6.505, z: 0}
+  m_LocalScale: {x: 8.387751, y: 8.387751, z: 8.387751}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1329971976210068664}
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4fbc6d2679b6a784687713fea0f17f67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95dfa381a041df54295c1fe72bac7d09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,18 +218,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000000014901161, y: -0.00044551492}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.31}
+    oldSize: {x: 0.09, y: 0.22}
     newSize: {x: 0.24, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.31}
+  m_Size: {x: 0.09388943, y: 0.22179928}
   m_EdgeRadius: 0
 --- !u!50 &-5773708345132172356
 Rigidbody2D:
@@ -267,3 +267,4 @@ MonoBehaviour:
   damage: 1
   damageInterval: 3
   targetTag: Hut
+  isAitvaras: 0
