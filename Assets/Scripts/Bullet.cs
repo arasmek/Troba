@@ -31,7 +31,8 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy2" ||
+        collision.gameObject.tag == "Enemy3" || collision.gameObject.tag == "Wall")
         {
             Die();
         }
