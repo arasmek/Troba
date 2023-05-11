@@ -27,6 +27,11 @@ public class PlayerManager : MonoBehaviour
     private int ScoreNum;
     private float DirectionDeg;
 
+    [SerializeField] private AudioSource shootingSound;
+    [SerializeField] private AudioSource coinsCollectingSound;
+    [SerializeField] private AudioSource heartCollectingSound;
+    [SerializeField] private AudioSource dieSound;
+
     void Start()
     {
         Init();
@@ -38,6 +43,7 @@ public class PlayerManager : MonoBehaviour
 
         if (controller.LeftMB && weapon.CanShoot)
         {
+            shootingSound.Play();
             weapon.Shoot(DegreeToVector2(DirectionDeg));
         }
         if (timeUntilDash > 0f)
@@ -95,12 +101,14 @@ public class PlayerManager : MonoBehaviour
         health--;
         if (health == 0)
         {
+            dieSound.Play();
             Die();
         }
     }
 
     private void Die()
     {
+        
         GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
@@ -116,18 +124,22 @@ public class PlayerManager : MonoBehaviour
         }
         if (collision.gameObject.tag == "MyCoin")
         {
+            
             Destroy(collision.gameObject);
             GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             gameManager.CollectCoin();
+            coinsCollectingSound.Play();
         }
         if (collision.gameObject.tag == "Heart")
         {
             if (health != maxHealth)
             {
+                
                 Destroy(collision.gameObject);
                 GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
                 gameManager.ChangeHearts(true, health);
                 health++;
+                heartCollectingSound.Play();
             }
 
         }
