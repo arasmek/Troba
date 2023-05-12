@@ -12,12 +12,18 @@ public class PlayerController : MonoBehaviour
     public bool LeftMB { get; private set; } = false;
     public ActionKey DashKey { get; private set; } = new ActionKey(KeyCode.LeftShift);
 
-
+    private SpriteRenderer spriteRenderer;
     public Sprite upSprite;
     public Sprite downSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
-    private SpriteRenderer spriteRenderer;
+
+    public Sprite dmgUp;
+    public Sprite dmgDown;
+    public Sprite dmgLeft;
+    public Sprite dmgRight;
+    
+    public bool takingDamage = false;
 
     void Start()
     {
@@ -37,20 +43,30 @@ public class PlayerController : MonoBehaviour
         
         if (Direction.x > 0)
         {
-            spriteRenderer.sprite = rightSprite;
+            if(takingDamage == true) spriteRenderer.sprite = dmgRight;
+            else spriteRenderer.sprite = rightSprite;
         }
         else if (Direction.x < 0)
         {
-            spriteRenderer.sprite = leftSprite;
+            if(takingDamage == true) spriteRenderer.sprite = dmgLeft;
+            else spriteRenderer.sprite = leftSprite;
         }
         else if (Direction.y > 0)
         {
-            spriteRenderer.sprite = upSprite;
+            if(takingDamage == true) spriteRenderer.sprite = dmgUp;
+            else spriteRenderer.sprite = upSprite;
         }
         else if (Direction.y < 0)
         {
-            spriteRenderer.sprite = downSprite;
+            if(takingDamage == true) spriteRenderer.sprite = dmgDown;
+            else spriteRenderer.sprite = downSprite;
         }
+    }
+    public IEnumerator DamageSprite()
+    {
+        takingDamage = true;
+        yield return new WaitForSeconds(0.5f);
+        takingDamage = false;
     }
 
     public class ActionKey

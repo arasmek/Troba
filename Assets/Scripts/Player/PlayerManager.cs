@@ -99,6 +99,7 @@ public class PlayerManager : MonoBehaviour
         GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         gameManager.ChangeHearts(false, health);
         health--;
+        StartCoroutine(controller.DamageSprite());
         if (health == 0)
         {
             dieSound.Play();
