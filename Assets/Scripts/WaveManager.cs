@@ -14,7 +14,9 @@ public class WaveManager : MonoBehaviour
     //private bool isWaitingForNextWave = false;
     public TextMeshProUGUI EnemyCountText;
     int EnemyCounter = 0;
+
     
+
     // Counts the amount of enemies on every update
     void Update()
     {
@@ -32,7 +34,7 @@ public class WaveManager : MonoBehaviour
     public void StartNextWave()
     {
         if (isWaveInProgress || currentWave >= enemyCountsPerWave.Length)
-        {
+        {          
             // A wave is already in progress, or there are no more waves
             return;
         }

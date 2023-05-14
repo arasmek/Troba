@@ -16,7 +16,7 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [HideInInspector] public GameManager GameManager => gameManager;
     [SerializeField] private HutManager hutManager;
-    [HideInInspector] public HutManager HutManager => hutManager;  
+    [HideInInspector] public HutManager HutManager => hutManager;
 
     void Start()
     {

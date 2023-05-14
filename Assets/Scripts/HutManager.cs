@@ -12,8 +12,8 @@ public class HutManager : MonoBehaviour
     {
         health -= amount;
         if (health <= 0)
-        {
-            Destroy(gameObject);
+        {           
+            Destroy(gameObject);          
             GameManager.Instance.GameOver();
         }
     }

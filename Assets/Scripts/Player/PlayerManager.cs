@@ -30,7 +30,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioSource shootingSound;
     [SerializeField] private AudioSource coinsCollectingSound;
     [SerializeField] private AudioSource heartCollectingSound;
-    [SerializeField] private AudioSource dieSound;
 
     void Start()
     {
@@ -102,16 +101,16 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(controller.DamageSprite());
         if (health == 0)
         {
-            dieSound.Play();
+            
             Die();
         }
     }
 
     private void Die()
     {
-        
         GameManager.Instance.GameOver();
         Destroy(gameObject);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

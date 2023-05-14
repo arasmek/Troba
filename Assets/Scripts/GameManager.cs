@@ -31,8 +31,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button RestartButton;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject UpgradeScreen;
-    
-    
+
+    [SerializeField] private AudioSource GameOverSound;
+    [SerializeField] private AudioSource TakeDamageSound;
+    [SerializeField] private AudioSource StopBGMusic;
+
 
     public GameState CurrentState {get; private set;}
 
@@ -65,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        GameOverSound.Play();
+        StopBGMusic.Pause();
         CurrentState = GameState.GameOver;
         RestartButton.gameObject.SetActive(true);
     }
@@ -112,6 +117,7 @@ public class GameManager : MonoBehaviour
     {
         if(!add)
         {
+            TakeDamageSound.Play();
             hearts[health - 1].enabled = false;
         }
         else
