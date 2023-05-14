@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     private BulletManager bulletManager;
     
-    [SerializeField] private float fireRate;
+    public float fireRate;
     private float waitInterval => 1 / fireRate;
     private float timeUntilShoot = 0f;
     [SerializeField] private float bulletSpeed;

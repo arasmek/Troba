@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
-    GameManager gameManager;
     PlayerManager playerManager;
     WaveManager waveManager;
 
@@ -14,11 +13,14 @@ public class UpgradeMenu : MonoBehaviour
     public Button SpeedButton;
     public Button BulletButton;
     public Button NextWaveButton;
+    [SerializeField] private GameManager gameManager;
+    [HideInInspector] public GameManager GameManager => gameManager;
+    [SerializeField] private HutManager hutManager;
+    [HideInInspector] public HutManager HutManager => hutManager;  
 
     void Start()
     {
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        gameManager = GameObject.FindObjectOfType<GameManager>();
         waveManager = GameObject.FindObjectOfType<WaveManager>();
     }
 
@@ -43,38 +45,45 @@ public class UpgradeMenu : MonoBehaviour
         gameManager.ScoreNum -= value;
     }
 
+    int healthlevel = 0;
+    public Image[] healthlevelimg;
     public void UpdateHealth()
     {
-        if (HealthButton.interactable)
+        if (gameManager.ScoreNum >= 10 && healthlevel <= 2)
         {
-            if (gameManager.ScoreNum >= 10)
-            {
-                playerManager.maxHealth += 1;
-                gameManager.ChangeHearts(true, 1);
-                SubtractCoins(10);
-            }
+            if(healthlevel == 0) { hutManager.health += 5f; hutManager.maxHealth += 5f;}
+            if(healthlevel == 1) { hutManager.health += 10f; hutManager.maxHealth += 10f;}
+            if(healthlevel == 2) { hutManager.health += 15f; hutManager.maxHealth += 15f;}
+            SubtractCoins(10);
+            healthlevelimg[healthlevel].GetComponent<Image>().color = Color.yellow;
+            healthlevel++;
         }
     }
+
+    int speedlevel = 0;
+    public Image[] speedlevelimg;
     public void UpdateSpeed()
     {
-        if (SpeedButton.interactable)
+        if (gameManager.ScoreNum >= 15 && speedlevel <= 2)
         {
-            if (gameManager.ScoreNum >= 15)
-            {
-                playerManager.speed += 1;
-                SubtractCoins(15);
-            }
+            playerManager.speed += 2;
+            SubtractCoins(15);
+            speedlevelimg[speedlevel].GetComponent<Image>().color = Color.yellow;
+            speedlevel++;
         }
     }
+
+    int bulletlevel = 0;
+    public Image[] bulletlevelimg;
     public void UpdateBullets()
     {
         Weapon weapon = playerManager.transform.Find("Weapon").GetComponent<Weapon>();
-        if (SpeedButton.interactable)
+        if (gameManager.ScoreNum >= 32 && bulletlevel <= 2)
         {
-            if (gameManager.ScoreNum >= 32)
-            {
-                SubtractCoins(32);
-            }
+            weapon.fireRate += 2;
+            SubtractCoins(32);
+            bulletlevelimg[bulletlevel].GetComponent<Image>().color = Color.yellow;
+            bulletlevel++;
         }
     }
     public void StartNextWave()

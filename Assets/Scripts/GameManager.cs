@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+        MyscoreText.text = ScoreNum.ToString();
     }
 
     public void GameOver()
@@ -105,7 +106,6 @@ public class GameManager : MonoBehaviour
     public void CollectCoin()
     {
         ScoreNum++;
-        MyscoreText.text = ScoreNum.ToString();
     }
     public Image[] hearts;
     public void ChangeHearts(bool add, int health)

@@ -7,7 +7,7 @@ public class HutManager : MonoBehaviour
 {
     public GameManager gameManager;
     public float health = 10f;
-    float maxHealth;
+    public float maxHealth;
     public void TakeDamage(float amount)
     {
         health -= amount;
