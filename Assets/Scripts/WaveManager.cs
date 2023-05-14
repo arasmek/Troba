@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -10,20 +11,22 @@ public class WaveManager : MonoBehaviour
 
     private int currentWave = 0;
     private bool isWaveInProgress = false;
-    private bool isWaitingForNextWave = false;
-
-    void Start()
-    {
-        
-    }
-
+    //private bool isWaitingForNextWave = false;
+    public TextMeshProUGUI EnemyCountText;
+    int EnemyCounter = 0;
+    
+    // Counts the amount of enemies on every update
     void Update()
     {
-        //if (isWaitingForNextWave && GameObject.FindWithTag("Enemy") == null)
-        //{
-        //    isWaitingForNextWave = false;
-        //    StartNextWave();
-        //}
+        EnemyCounter = 0;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        EnemyCounter += enemies.Length;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy2");
+        EnemyCounter += enemies.Length;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy3");
+        EnemyCounter += enemies.Length;
+        EnemyCountText.text = EnemyCounter.ToString();
+        
     }
 
     public void StartNextWave()
@@ -39,7 +42,8 @@ public class WaveManager : MonoBehaviour
         // Spawn enemies for the current wave
         int enemyCount = enemyCountsPerWave[currentWave];
         StartCoroutine(SpawnEnemies(enemyCount));
-
+        EnemyCounter = enemyCount;
+        EnemyCountText.text = EnemyCounter.ToString();
         currentWave++;
     }
 
@@ -54,6 +58,6 @@ public class WaveManager : MonoBehaviour
         }
 
         isWaveInProgress = false;
-        isWaitingForNextWave = true;
+        //isWaitingForNextWave = true;
     }
 }

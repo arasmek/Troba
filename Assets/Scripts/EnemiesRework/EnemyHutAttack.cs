@@ -9,7 +9,7 @@ public class EnemyHutAttack : MonoBehaviour
     public string targetTag = "Hut";
     public bool isAitvaras = false;
     private float nextDamageTime = 0.0f;
-
+    [SerializeField] public EnemyHealth enemyHealth;
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(targetTag) && Time.time > nextDamageTime)
@@ -22,7 +22,7 @@ public class EnemyHutAttack : MonoBehaviour
             }
             if(isAitvaras)
             {
-                EnemyHealth.Destroy(gameObject);
+                enemyHealth.Death();
             }
             nextDamageTime = Time.time + damageInterval;
         }

@@ -268,3 +268,4 @@ MonoBehaviour:
   damageInterval: 3
   targetTag: Hut
   isAitvaras: 1
+  enemyHealth: {fileID: 832266114817503395}
