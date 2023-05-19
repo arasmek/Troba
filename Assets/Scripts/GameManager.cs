@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BulletManager bulletManager;
     [HideInInspector] public BulletManager BulletManager => bulletManager;
 
+
+
+    [SerializeField] private GameObject RestartMenu;
     [SerializeField] private Button RestartButton;
+    
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject UpgradeScreen;
 
@@ -48,10 +52,10 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         CurrentState = GameState.Game;
-        RestartButton.onClick.AddListener(() => Restart());
-        RestartButton.gameObject.SetActive(false);
+        Time.timeScale = 1;
         PauseMenu.gameObject.SetActive(false);
         UpgradeScreen.gameObject.SetActive(false);
+        RestartMenu.gameObject.SetActive(false);
         Player = Instantiate(playerPrefab);
         Player.transform.position = playerSpawn.position;
         playerCam.Follow = Player.transform;
@@ -68,10 +72,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        
         GameOverSound.Play();
         StopBGMusic.Pause();
+        Time.timeScale = 0;
         CurrentState = GameState.GameOver;
-        RestartButton.gameObject.SetActive(true);
+        RestartMenu.gameObject.SetActive(true);
     }
 
     public void PauseGame()
@@ -94,8 +100,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    //TODO: When checkpoints are implemented, this should do more functionality
-    private void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene("MainLevelScene");
     }

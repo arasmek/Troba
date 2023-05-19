@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     public Transform[] spawnLocations;
     public int[] enemyCountsPerWave;
 
-    private int currentWave = 0;
+    public int currentWave = 0;
     private bool isWaveInProgress = false;
     //private bool isWaitingForNextWave = false;
     public TextMeshProUGUI EnemyCountText;

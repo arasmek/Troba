@@ -108,9 +108,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Die()
     {
-        GameManager.Instance.GameOver();
         Destroy(gameObject);
-        
+        GameManager.Instance.GameOver();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
