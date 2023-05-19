@@ -19,7 +19,7 @@ public class RestartMenu : MonoBehaviour
         
         if( currentscore > PlayerPrefs.GetInt("HighScore"))
         {
-            PlayerPrefs.SetInt("HighScore", waveManager.currentWave);
+            PlayerPrefs.SetInt("HighScore", currentscore);
         }
 
         HighScoreText.text = "High score: " + PlayerPrefs.GetInt("HighScore").ToString("00");
