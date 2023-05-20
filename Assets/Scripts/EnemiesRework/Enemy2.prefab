@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -7862552020103617583}
   - component: {fileID: -5773708345132172356}
   - component: {fileID: 2754973409251678239}
+  - component: {fileID: -2814475960035752011}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy2
@@ -269,3 +270,18 @@ MonoBehaviour:
   targetTag: Hut
   isAitvaras: 0
   enemyHealth: {fileID: 832266114817503395}
+--- !u!114 &-2814475960035752011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329971976941907072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfce83d6381fcef489deeea5cf5e564a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 21300000, guid: 95dfa381a041df54295c1fe72bac7d09, type: 3}
+  damage: {fileID: 21300000, guid: de0e18485ace48c42b8a941737aad748, type: 3}
+  takingDamage: 0

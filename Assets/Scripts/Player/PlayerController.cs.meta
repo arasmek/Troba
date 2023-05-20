@@ -8,6 +8,10 @@ MonoImporter:
   - downSprite: {fileID: 671631726, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
   - leftSprite: {fileID: -951230943, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
   - rightSprite: {fileID: 979953432, guid: 78735616ce9630b49b738f5eb7827c24, type: 3}
+  - dmgUp: {fileID: 10964353, guid: ef0c61680f2715341bc902e3d20904d1, type: 3}
+  - dmgDown: {fileID: 1628557334, guid: ef0c61680f2715341bc902e3d20904d1, type: 3}
+  - dmgLeft: {fileID: 1421857465, guid: ef0c61680f2715341bc902e3d20904d1, type: 3}
+  - dmgRight: {fileID: -206962458, guid: ef0c61680f2715341bc902e3d20904d1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
