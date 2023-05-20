@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ContinueButton: {fileID: 1008750471}
   SettingsMenu: {fileID: 8993653682838915100, guid: f5c6aafefd2b58e428d1945fb6cc8362, type: 3}
+  HiScore: {fileID: 1321367974}
 --- !u!1 &429143164
 GameObject:
   m_ObjectHideFlags: 0
