@@ -30,4 +30,10 @@ public class RestartMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainLevelScene");
     }
+    public void LeaveToMainMenu()
+    {
+        //SceneManager.UnloadSceneAsync("MainLevelScene");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
 }
