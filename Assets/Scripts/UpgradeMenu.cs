@@ -49,12 +49,12 @@ public class UpgradeMenu : MonoBehaviour
     public Image[] healthlevelimg;
     public void UpdateHealth()
     {
-        if (gameManager.ScoreNum >= 10 && healthlevel <= 2)
+        if (gameManager.ScoreNum >= 1 && healthlevel <= 2)
         {
             if(healthlevel == 0) { hutManager.health += 5f; hutManager.maxHealth += 5f;}
             if(healthlevel == 1) { hutManager.health += 10f; hutManager.maxHealth += 10f;}
             if(healthlevel == 2) { hutManager.health += 15f; hutManager.maxHealth += 15f;}
-            SubtractCoins(10);
+            SubtractCoins(1);
             healthlevelimg[healthlevel].GetComponent<Image>().color = Color.yellow;
             healthlevel++;
         }
@@ -64,10 +64,10 @@ public class UpgradeMenu : MonoBehaviour
     public Image[] speedlevelimg;
     public void UpdateSpeed()
     {
-        if (gameManager.ScoreNum >= 15 && speedlevel <= 2)
+        if (gameManager.ScoreNum >= 3 && speedlevel <= 2)
         {
             playerManager.speed += 2;
-            SubtractCoins(15);
+            SubtractCoins(3);
             speedlevelimg[speedlevel].GetComponent<Image>().color = Color.yellow;
             speedlevel++;
         }
@@ -78,10 +78,10 @@ public class UpgradeMenu : MonoBehaviour
     public void UpdateBullets()
     {
         Weapon weapon = playerManager.transform.Find("Weapon").GetComponent<Weapon>();
-        if (gameManager.ScoreNum >= 32 && bulletlevel <= 2)
+        if (gameManager.ScoreNum >= 2 && bulletlevel <= 2)
         {
             weapon.fireRate += 2;
-            SubtractCoins(32);
+            SubtractCoins(2);
             bulletlevelimg[bulletlevel].GetComponent<Image>().color = Color.yellow;
             bulletlevel++;
         }
