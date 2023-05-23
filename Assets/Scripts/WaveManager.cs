@@ -56,7 +56,7 @@ public class WaveManager : MonoBehaviour
             int enemyIndex = Random.Range(0, enemyPrefabs.Length);
             int spawnIndex = Random.Range(0, spawnLocations.Length);
             Instantiate(enemyPrefabs[enemyIndex], spawnLocations[spawnIndex].position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
 
         isWaveInProgress = false;
