@@ -3,6 +3,12 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int health = 3; // The health points of the enemy.
+    private EnemySprite sprite;
+    
+    private void Start()
+    {
+        sprite = GetComponent<EnemySprite>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
         {
             // Reduce the health points of the enemy.
             health -= 1;
-
+            StartCoroutine(sprite.DamageSprite());
             // Check if the enemy has no health points left.
             if (health <= 0)
             {
