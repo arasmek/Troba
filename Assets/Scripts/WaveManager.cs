@@ -14,7 +14,8 @@ public class WaveManager : MonoBehaviour
     //private bool isWaitingForNextWave = false;
     public TextMeshProUGUI EnemyCountText;
     int EnemyCounter = 0;
-
+    int PreviousEnemyCount = 0;
+    int CurrentEnemyCount = 0;
     
 
     // Counts the amount of enemies on every update
@@ -33,20 +34,30 @@ public class WaveManager : MonoBehaviour
 
     public void StartNextWave()
     {
-        if (isWaveInProgress || currentWave >= enemyCountsPerWave.Length)
+        if (isWaveInProgress && EnemyCounter != 0)
         {          
             // A wave is already in progress, or there are no more waves
             return;
         }
+        PreviousEnemyCount = CurrentEnemyCount;
 
         isWaveInProgress = true;
-
-        // Spawn enemies for the current wave
-        int enemyCount = enemyCountsPerWave[currentWave];
-        StartCoroutine(SpawnEnemies(enemyCount));
-        EnemyCounter = enemyCount;
-        EnemyCountText.text = EnemyCounter.ToString();
+        CurrentEnemyCount = CreateWave(PreviousEnemyCount);
         currentWave++;
+    }
+    public int CreateWave(int previous)
+    {
+        int enemyCount;
+        if(previous == 0) 
+        {  
+            enemyCount = 3;
+        }
+        else 
+        {
+            enemyCount = previous + Random.Range(-2, 5);
+        }
+        StartCoroutine(SpawnEnemies(enemyCount));
+        return enemyCount;
     }
 
     IEnumerator SpawnEnemies(int enemyCount)
@@ -60,6 +71,5 @@ public class WaveManager : MonoBehaviour
         }
 
         isWaveInProgress = false;
-        //isWaitingForNextWave = true;
     }
 }
