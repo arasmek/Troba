@@ -16731,6 +16731,8 @@ MonoBehaviour:
   gameManager: {fileID: 2048358273}
   health: 10
   maxHealth: 0
+  spriteDefault: {fileID: 21300000, guid: 4508d717a6a0697408295fa72532754d, type: 3}
+  spriteDamage: {fileID: 21300000, guid: 42e74dc712125b1499be21f7911a9898, type: 3}
   hintObject: {fileID: 585463236}
   openMenuKey: 101
   HealthText: {fileID: 1558509373}

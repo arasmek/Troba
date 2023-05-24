@@ -8,8 +8,13 @@ public class HutManager : MonoBehaviour
     public GameManager gameManager;
     public float health = 10f;
     public float maxHealth;
+    private SpriteRenderer spriteRenderer;
+    public Sprite spriteDefault, spriteDamage;
+    bool takingDamage = false;
+    
     public void TakeDamage(float amount)
     {
+        StartCoroutine(DamageSprite());
         health -= amount;
         if (health <= 0)
         {           
@@ -25,6 +30,7 @@ public class HutManager : MonoBehaviour
     {
         hintObject.SetActive(false);
         maxHealth = health;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public TextMeshProUGUI HealthText;
@@ -35,14 +41,21 @@ public class HutManager : MonoBehaviour
             gameManager.Upgrade();
         }
         HealthText.text = string.Format("{0}/{1}", health.ToString(), maxHealth.ToString());
-        
+        if(takingDamage) spriteRenderer.sprite = spriteDamage;
+        else spriteRenderer.sprite = spriteDefault;
+    }
+
+    public IEnumerator DamageSprite()
+    {
+        takingDamage = true;
+        yield return new WaitForSeconds(0.3f);
+        takingDamage = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("LABAS, PLAYERI.");
             isPlayerInRange = true;
             hintObject.SetActive(true);
         }
@@ -52,7 +65,6 @@ public class HutManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("VISO, PLAYERI!");
             isPlayerInRange = false;
             hintObject.SetActive(false);
         }

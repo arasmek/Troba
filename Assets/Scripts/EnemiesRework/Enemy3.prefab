@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   coinPrefab: {fileID: 1775398012288577495, guid: 091c3295c1e318c49a715b55c4810002, type: 3}
-  coinSpawnChance: 0.5
+  coinSpawnChance: 0.6
   heartPrefab: {fileID: 1775398012288577495, guid: 59bf7778cc9392d40a53e29aa7779668, type: 3}
   heartSpawnChance: 0
 --- !u!61 &-7862552020103617583
