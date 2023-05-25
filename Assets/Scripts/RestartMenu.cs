@@ -15,7 +15,7 @@ public class RestartMenu : MonoBehaviour
 
     void Start()
     {
-        int currentscore = waveManager.currentWave - 1;
+        int currentscore = waveManager.currentWave;
         
         if( currentscore > PlayerPrefs.GetInt("HighScore"))
         {

@@ -205,7 +205,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1775398012288577495, guid: 091c3295c1e318c49a715b55c4810002, type: 3}
   coinSpawnChance: 0.4
   heartPrefab: {fileID: 1775398012288577495, guid: 59bf7778cc9392d40a53e29aa7779668, type: 3}
-  heartSpawnChance: 0.1
+  heartSpawnChance: 0.05
 --- !u!61 &-7862552020103617583
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,11 +8,14 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform playerTransform; // The transform of the player GameObject.
     private bool canMove = false; // Flag to check if the enemy can move towards the player.
-
+    WaveManager waveManager;
     private void Start()
     {
         // Start the delay coroutine.
         StartCoroutine(StartMovementDelay());
+        waveManager = GameObject.Find("WaveManager")?.GetComponent<WaveManager>();
+        if(waveManager.WaveType == 1) speed += 2;
+        if(waveManager.WaveType == 3) speed += 1;
     }
 
     private void Update()

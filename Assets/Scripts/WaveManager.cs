@@ -8,7 +8,6 @@ public class WaveManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public Transform[] spawnLocations;
     public int[] enemyCountsPerWave;
-
     public int currentWave = 0;
     private bool isWaveInProgress = false;
     //private bool isWaitingForNextWave = false;
@@ -16,8 +15,15 @@ public class WaveManager : MonoBehaviour
     int EnemyCounter = 0;
     int PreviousEnemyCount = 0;
     int CurrentEnemyCount = 0;
-    
-
+    public TextMeshProUGUI WaveInfo;
+    public int WaveType = 0;
+    private Dictionary<int, string> waveTypeNames = new Dictionary<int, string>()
+    {
+        { 0, "Default" },
+        { 1, "Fast enemies" },
+        { 2, "Tough enemies" },
+        { 3, "Strong enemies" }
+    };
     // Counts the amount of enemies on every update
     void Update()
     {
@@ -55,9 +61,25 @@ public class WaveManager : MonoBehaviour
         else 
         {
             enemyCount = previous + Random.Range(-2, 5);
+
+            if((currentWave + 1) % 3 == 0) 
+            {
+                WaveType = Random.Range(1, 4);
+                Debug.Log("SPECIAL WAVE: " + WaveType);
+            }
+            else WaveType = 0;
         }
+        WaveHUD();
         StartCoroutine(SpawnEnemies(enemyCount));
         return enemyCount;
+    }
+
+    public void WaveHUD()
+    {
+        int wavenr = currentWave + 1;
+        if(WaveType == 0) WaveInfo.text = string.Format("Wave {0}", wavenr.ToString("00"));
+        else WaveInfo.text = string.Format("Wave {0}: {1}", wavenr.ToString("00"), waveTypeNames[WaveType]);
+        if(currentWave > PlayerPrefs.GetInt("HighScore")) WaveInfo.color = Color.yellow;
     }
 
     IEnumerator SpawnEnemies(int enemyCount)
