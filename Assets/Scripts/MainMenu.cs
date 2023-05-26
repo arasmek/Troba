@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public Button ContinueButton;
     public GameObject SettingsMenu;
+    public GameObject ControlsMenu;
     public TextMeshProUGUI HiScore;
     void Start()
     {
@@ -28,8 +29,16 @@ public class MainMenu : MonoBehaviour
     //DABAR PADIDINA HIGHSCORE TESTAVIMUI. REIKS PAKEIST VELIAU
     public void AboutButton()
     {
-        PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("HighScore") + 1);
-        Start();
+        Transform existingMenu = transform.Find("ControlsMenu(Clone)");
+        if (existingMenu != null)
+        {
+            existingMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameObject controlsMenuObject = Instantiate(ControlsMenu);
+            controlsMenuObject.transform.SetParent(transform, false);
+        }
     }
     public void StartGame()
     {

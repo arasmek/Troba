@@ -3827,7 +3827,7 @@ GameObject:
   - component: {fileID: 433649735}
   - component: {fileID: 433649734}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3900,7 +3900,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1636139167}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: OpenControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8764,7 +8764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RESET
+  m_text: controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -12859,6 +12859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SettingsMenu: {fileID: 8993653682838915100, guid: f5c6aafefd2b58e428d1945fb6cc8362, type: 3}
+  ControlsMenu: {fileID: 8993653682838915100, guid: b68ee764e0f28a942985db2e8d105f87, type: 3}
   RestartButton: {fileID: 433649734}
 --- !u!1 &1641371803
 GameObject:

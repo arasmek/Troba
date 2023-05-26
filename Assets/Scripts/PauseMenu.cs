@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject SettingsMenu;
+    public GameObject ControlsMenu;
     public Button RestartButton;
     
     void Start()
     {
-        RestartButton.interactable = false;
+        //RestartButton.interactable = false;
     }
     void Update()
     {
@@ -32,9 +33,18 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     //TODO: Implement this when checkpoints get added.
-    public void Restart()
+    public void OpenControls()
     {
-        Debug.Log("NOT IMPLEMENTED");
+        Transform existingMenu = transform.Find("ControlsMenu(Clone)");
+        if (existingMenu != null)
+        {
+            existingMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameObject controlsMenuObject = Instantiate(ControlsMenu);
+            controlsMenuObject.transform.SetParent(transform, false);
+        }
     }
     public void OpenSettings()
     {
