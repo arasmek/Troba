@@ -49,14 +49,22 @@ public class UpgradeMenu : MonoBehaviour
     public Image[] healthlevelimg;
     public void UpdateHealth()
     {
-        if (gameManager.ScoreNum >= 1 && healthlevel <= 2)
+        if (gameManager.ScoreNum >= 5 && healthlevel <= 2)
         {
             if(healthlevel == 0) { hutManager.health += 5f; hutManager.maxHealth += 5f;}
             if(healthlevel == 1) { hutManager.health += 10f; hutManager.maxHealth += 10f;}
             if(healthlevel == 2) { hutManager.health += 15f; hutManager.maxHealth += 15f;}
-            SubtractCoins(1);
+            SubtractCoins(5);
             healthlevelimg[healthlevel].GetComponent<Image>().color = Color.yellow;
             healthlevel++;
+        }
+    }
+    public void FixHut()
+    {
+        if(hutManager.health != hutManager.maxHealth && gameManager.ScoreNum >= 1)
+        {
+            hutManager.health += 1f;
+            SubtractCoins(1);
         }
     }
 

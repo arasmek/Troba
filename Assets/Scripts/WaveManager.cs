@@ -60,7 +60,7 @@ public class WaveManager : MonoBehaviour
         }
         else 
         {
-            enemyCount = previous + Random.Range(-2, 5);
+            enemyCount = previous + Random.Range(0, 5);
 
             if((currentWave + 1) % 3 == 0) 
             {
